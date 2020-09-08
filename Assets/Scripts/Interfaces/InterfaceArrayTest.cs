@@ -21,6 +21,17 @@ public class InterfaceArrayTest : MonoBehaviour
         CurrentWepon.Fire();
     }
 
+    public void PickedUpWeapon(int weaponId)
+    {
+        for (int i = 0; i < weponArray.Length; i++)
+        {
+            if(weponArray[i].PickUp(weaponId))
+            {
+                return;
+            }
+        }
+    }
+
     public void UpgradeCurrentWeapon()
     {
         CurrentWepon.PickUp(0);
@@ -29,6 +40,14 @@ public class InterfaceArrayTest : MonoBehaviour
     public void ResetCurrentWeapon()
     {
         CurrentWepon.ResetStats();
+    }
+
+    public void ResetAllWeapons()
+    {
+        for (int i = 0; i < weponArray.Length; i++)
+        {
+            weponArray[i].ResetStats();
+        }
     }
 
     private void Start()

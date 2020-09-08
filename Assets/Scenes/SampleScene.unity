@@ -448,6 +448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f31db9b1befc2b4a935ce464bc645d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradeTier: 0
+  UpgradeTierMax: 3
+  WeaponID: 0
+  IsPickedUp: 1
 --- !u!114 &840997398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c3b32aa41fcfa47b693e73560f6749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentWeponInArray: 0
 --- !u!4 &840997399
 Transform:
   m_ObjectHideFlags: 0

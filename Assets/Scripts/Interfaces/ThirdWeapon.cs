@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 
-public class ThirdWeapon : MonoBehaviour//IWeapon
+public class ThirdWeapon : MonoBehaviour, IWeapon
 {
     public void Fire()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Upgrade()
     {
         throw new System.NotImplementedException();
     }
@@ -17,12 +12,12 @@ public class ThirdWeapon : MonoBehaviour//IWeapon
         throw new System.NotImplementedException();
     }
 
-    public void PickUp()
+    public bool IsWeaponActivated()
     {
         throw new System.NotImplementedException();
     }
 
-    public bool IsWeaponActivated()
+    public bool PickUp(int WeaponId)
     {
         throw new System.NotImplementedException();
     }

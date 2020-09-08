@@ -2,11 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondWeapon : MonoBehaviour //IWeapon
+public class SecondWeapon : WeaponBase, IWeapon
 {
+    private IEnumerator PowerUpTimer;
+
+    public float PowerUpTime = 10f;
+    private float powerUpTimeLeft;
+    private bool isPoweredUp;
     public void Fire()
     {
-        throw new System.NotImplementedException();
+        if(isPoweredUp)
+        {
+            AttackPoweredUp();
+        }
+        else
+        {
+            AttackRegular();
+        }
+    }
+
+    private void AttackRegular()
+    {
+        Debug.Log("Regular Attack");
+    }
+
+    private void AttackPoweredUp()
+    {
+        StartCoroutine(PowerUpTimer);
     }
 
     public bool IsWeaponActivated()
@@ -14,18 +36,39 @@ public class SecondWeapon : MonoBehaviour //IWeapon
         throw new System.NotImplementedException();
     }
 
-    public void PickUp()
+
+    public bool PickUp(int WeaponId)
     {
-        throw new System.NotImplementedException();
+        if(CheckIfSameWeapon(WeaponId))
+        {
+            AttackPoweredUp();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void ResetStats()
     {
-        throw new System.NotImplementedException();
+        ResetStats();
     }
 
-    public void Upgrade()
+    private IEnumerator PowerUpOverdrive()
     {
-        throw new System.NotImplementedException();
+        isPoweredUp = true;
+        powerUpTimeLeft = PowerUpTime;
+        while (powerUpTimeLeft > 0f)
+        {
+            powerUpTimeLeft -= Time.deltaTime;
+            yield return null;
+        }
+        isPoweredUp = false;
+    }
+
+    private void Start()
+    {
+        PowerUpTimer = PowerUpOverdrive();
     }
 }
