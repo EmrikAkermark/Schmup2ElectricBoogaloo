@@ -17,7 +17,7 @@ public class WeaponBase : MonoBehaviour
 
     public bool CheckIfSameWeapon(int newWeaponId)
     {
-        if(newWeaponId == WeaponID)
+        if(newWeaponId == WeaponID || newWeaponId == -1)
         {
             return true;
         }
