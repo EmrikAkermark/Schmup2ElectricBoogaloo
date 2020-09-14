@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class FirstWeapon : WeaponBase, IWeapon
 {
-    
+    public GameObject Projectile;
+    public Transform[] FirePosition;
+    private Vector2[] FireRotation;
 
     public void Fire()
     {
@@ -26,19 +28,35 @@ public class FirstWeapon : WeaponBase, IWeapon
 
     void AttackTier0()
     {
-        Debug.Log("Tier 1");
+        FireTheGuns(1);
     }
     void AttackTier1()
     {
-        Debug.Log("Tier 2");
+        FireTheGuns(3);
     }
 
     void AttackTier2()
     {
-        Debug.Log("Tier 3");
+        FireTheGuns(5);
     }
 
-    
+    private void FireTheGuns(int AmountToFire)
+	{
+        for (int i = 0; i < AmountToFire; i++)
+        {
+            GameObject projectile = Instantiate(Projectile, FirePosition[i].position, FirePosition[i].rotation);
+            Projectile firedProjectile = projectile.GetComponent<Projectile>();
+            firedProjectile.SetDirection(FireRotation[i]);
+        }
+    }
+	private void Start()
+	{
+        FireRotation = new Vector2[FirePosition.Length];
+		for (int i = 0; i < FirePosition.Length; i++)
+		{
+            FireRotation[i] = FirePosition[i].rotation.eulerAngles;
+		}
+    }
 
     public void ResetStats()
     {
