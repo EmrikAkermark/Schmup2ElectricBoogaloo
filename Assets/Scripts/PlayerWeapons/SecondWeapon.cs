@@ -66,9 +66,4 @@ public class SecondWeapon : WeaponBase, IWeapon
         }
         isPoweredUp = false;
     }
-
-    private void Start()
-    {
-        PowerUpTimer = PowerUpOverdrive();
-    }
 }

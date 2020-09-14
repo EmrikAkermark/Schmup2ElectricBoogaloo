@@ -6,7 +6,7 @@ public interface IEnemy
 {
     void Shoot();
 
-    void GetHit();
+    void GetHit(float damage);
 
 
 }
