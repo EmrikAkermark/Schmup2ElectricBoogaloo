@@ -46,7 +46,7 @@ public class FirstWeapon : WeaponBase, IWeapon
         {
             GameObject projectile = Instantiate(Projectile, FirePosition[i].position, FirePosition[i].rotation);
             Projectile firedProjectile = projectile.GetComponent<Projectile>();
-            firedProjectile.SetDirection(FireRotation[i]);
+            firedProjectile.SetDirection(FirePosition[i].rotation.eulerAngles.z);
         }
     }
 	private void Start()

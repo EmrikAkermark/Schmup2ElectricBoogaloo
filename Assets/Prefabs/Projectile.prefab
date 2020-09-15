@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6490728599555599781}
   - component: {fileID: 6490728599555599787}
-  - component: {fileID: 6490728599555599780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,32 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6490728599555599780
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6490728599555599782}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
 --- !u!1 &6490728601086156750
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +94,7 @@ GameObject:
   - component: {fileID: 6490728601086156749}
   - component: {fileID: 6490728601086155827}
   - component: {fileID: 6490728601086155826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   Damage: 1
+  Lifetime: 3
   direction: {x: 0, y: -1}
 --- !u!61 &6490728601086155826
 BoxCollider2D:
