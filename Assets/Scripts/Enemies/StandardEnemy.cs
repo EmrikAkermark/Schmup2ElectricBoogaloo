@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandardEnemy : MonoBehaviour, IEnemy
+public class StandardEnemy : MonoBehaviour, IEnemy, IDamagable
 {
 	public Transform FiringPoint;
 	public GameObject Projectile;
@@ -37,4 +37,10 @@ public class StandardEnemy : MonoBehaviour, IEnemy
 		}
 	}
 
+	public void PlayerCollision()
+	{
+		var OwnShit = gameObject.GetComponent<IEnemy>();
+		mySpawner.RemoveEnemyFromList(OwnShit);
+		gameObject.SetActive(false);
+	}
 }

@@ -17,7 +17,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if(Input.GetKey(Shoot))
 		{
-            pWeapons.Fire();
+         pWeapons.Fire();
 		}
     }
 }

@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &376292003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,6 +571,7 @@ MonoBehaviour:
   FirePosition: []
   BulletSpeed: 0
   BulletDamage: 0
+  BulletLifespan: 0
   FireRate: 0
 --- !u!114 &840997398
 MonoBehaviour:
@@ -1448,6 +1449,22 @@ PrefabInstance:
     - target: {fileID: 81047250860691586, guid: c42c9ccba22b6954ea2c101a8478fd56, type: 3}
       propertyPath: UpgradeTier
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 81047250860691586, guid: c42c9ccba22b6954ea2c101a8478fd56, type: 3}
+      propertyPath: BulletSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 81047250860691586, guid: c42c9ccba22b6954ea2c101a8478fd56, type: 3}
+      propertyPath: BulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 81047250860691586, guid: c42c9ccba22b6954ea2c101a8478fd56, type: 3}
+      propertyPath: FireRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 81047250860691586, guid: c42c9ccba22b6954ea2c101a8478fd56, type: 3}
+      propertyPath: BulletLifespan
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6618688748023419744, guid: c42c9ccba22b6954ea2c101a8478fd56, type: 3}
       propertyPath: UpgradeTier

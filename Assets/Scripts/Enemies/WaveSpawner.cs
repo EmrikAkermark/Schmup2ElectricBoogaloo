@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Common;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
@@ -8,7 +7,6 @@ public class WaveSpawner : MonoBehaviour
     public int AmountToSpawn;
     public float staggerAmount;
 	public GameObject Enemy;
-	public float EnemyHealth, EnemyDamage, EnemyBulletSpeed;
 	public Transform SpawnPoint;
 	public EnemySubMovements SubMovement;
 	public float AvarageTimeBetweenShots, TimeBetweenShotsSpread;
@@ -77,6 +75,8 @@ public class WaveSpawner : MonoBehaviour
 			EnemyMovement spawnedEnemyMovement = spawnedEnemy.GetComponent<EnemyMovement>();
 			spawnedEnemyMovement.EnemyMovementSetup(SubMovement, staggerAmount * i);
 			spawnedEnemies.Add(spawnedEnemy.GetComponent<IEnemy>());
+			StandardEnemy enemySelf = spawnedEnemy.GetComponent<StandardEnemy>();
+			enemySelf.SetupEnemy(self);
 		}
 		StartCoroutine(TellEnemiesToFire());
 	}

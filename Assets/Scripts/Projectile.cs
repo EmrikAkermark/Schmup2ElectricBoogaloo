@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     public float Speed, Damage, Lifetime = 3f;
     public Vector2 direction;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,15 +37,10 @@ public class Projectile : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-        Debug.Log($"We hit something! It was {collision.gameObject.name}, I am in Layer {gameObject.layer}");
-        if(collision.gameObject.layer == 8)
+        IDamagable hitThing = collision.gameObject.GetComponent<IDamagable>();
+        if (hitThing != null)
         {
-            return;
-        }
-        IEnemy hitEnemy = collision.gameObject.GetComponent<IEnemy>();
-        if (hitEnemy != null)
-        {
-            hitEnemy.GetHit(Damage);
+            hitThing.GetHit(Damage);
         }
         Destroy(gameObject);
     }

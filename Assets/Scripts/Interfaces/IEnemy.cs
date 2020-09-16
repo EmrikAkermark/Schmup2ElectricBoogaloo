@@ -1,12 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
 public interface IEnemy
 {
     void Shoot();
-
-    void GetHit(float damage);
-
-
 }
