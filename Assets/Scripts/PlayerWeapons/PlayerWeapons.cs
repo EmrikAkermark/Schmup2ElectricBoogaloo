@@ -8,6 +8,7 @@ public class PlayerWeapons : MonoBehaviour
     public IWeapon[] weaponArray;
     public IWeapon CurrentWeapon;
 
+
     public void FireAll()
     {
         for (int i = 0; i < weaponArray.Length; i++)
@@ -16,7 +17,7 @@ public class PlayerWeapons : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void Fire()
     {
         CurrentWeapon.Fire();
     }
@@ -63,6 +64,7 @@ public class PlayerWeapons : MonoBehaviour
             if(weaponArray[i].IsWeaponActivated())
             {
                 CurrentWeapon = weaponArray[i];
+                CurrentWeaponInArray = i;
                 return;
             }
         }
@@ -71,6 +73,7 @@ public class PlayerWeapons : MonoBehaviour
             if(weaponArray[i].IsWeaponActivated())
             {
                 CurrentWeapon = weaponArray[i];
+                CurrentWeaponInArray = i;
                 return;
             }
         }
@@ -83,6 +86,7 @@ public class PlayerWeapons : MonoBehaviour
             if (weaponArray[i].IsWeaponActivated())
             {
                 CurrentWeapon = weaponArray[i];
+                CurrentWeaponInArray = i;
                 return;
             }
         }
@@ -91,6 +95,7 @@ public class PlayerWeapons : MonoBehaviour
             if (weaponArray[i].IsWeaponActivated())
             {
                 CurrentWeapon = weaponArray[i];
+                CurrentWeaponInArray = i;
                 return;
             }
         }

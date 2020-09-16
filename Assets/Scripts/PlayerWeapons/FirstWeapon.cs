@@ -6,10 +6,16 @@ public class FirstWeapon : WeaponBase, IWeapon
 {
     public GameObject Projectile;
     public Transform[] FirePosition;
-    private Vector2[] FireRotation;
+    public float BulletSpeed, BulletDamage, BulletLifespan, FireRate;
+    private float[] FireRotation;
+    private bool canFire = true;
 
     public void Fire()
     {
+        if(!canFire)
+		{
+            return;
+		}
         switch (UpgradeTier)
         {
             case 0:
@@ -24,6 +30,7 @@ public class FirstWeapon : WeaponBase, IWeapon
             default:
                 break;
         }
+        StartCoroutine(HoldFire());
     }
 
     void AttackTier0()
@@ -46,15 +53,15 @@ public class FirstWeapon : WeaponBase, IWeapon
         {
             GameObject projectile = Instantiate(Projectile, FirePosition[i].position, FirePosition[i].rotation);
             Projectile firedProjectile = projectile.GetComponent<Projectile>();
-            firedProjectile.SetDirection(FirePosition[i].rotation.eulerAngles.z);
+            firedProjectile.SetupBullet(FireRotation[i], BulletDamage, BulletSpeed);
         }
     }
 	private void Start()
 	{
-        FireRotation = new Vector2[FirePosition.Length];
+        FireRotation = new float[FirePosition.Length];
 		for (int i = 0; i < FirePosition.Length; i++)
 		{
-            FireRotation[i] = FirePosition[i].rotation.eulerAngles;
+            FireRotation[i] = FirePosition[i].rotation.eulerAngles.z;
 		}
     }
 
@@ -68,6 +75,13 @@ public class FirstWeapon : WeaponBase, IWeapon
     {
         return IsPickedUp;
     }
+
+    private IEnumerator HoldFire()
+	{
+        canFire = false;
+        yield return new WaitForSeconds(FireRate);
+        canFire = true;
+	}
 
     public bool PickUp(int WeaponId)
     {

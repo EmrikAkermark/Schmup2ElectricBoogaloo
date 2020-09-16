@@ -14,7 +14,7 @@ public class ThirdWeapon : MonoBehaviour, IWeapon
 
     public bool IsWeaponActivated()
     {
-        throw new System.NotImplementedException();
+       return false;
     }
 
     public bool PickUp(int WeaponId)

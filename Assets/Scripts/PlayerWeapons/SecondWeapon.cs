@@ -33,7 +33,7 @@ public class SecondWeapon : WeaponBase, IWeapon
 
     public bool IsWeaponActivated()
     {
-        throw new System.NotImplementedException();
+        return IsPickedUp;
     }
 
 
