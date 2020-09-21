@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SecondWeapon : WeaponBase, IWeapon
 {
-    private IEnumerator PowerUpTimer;
+    private Coroutine PowerUpTimer;
 
     public float PowerUpTime = 10f;
-    private float powerUpTimeLeft;
     private bool isPoweredUp;
     public void Fire()
     {
@@ -28,7 +27,7 @@ public class SecondWeapon : WeaponBase, IWeapon
 
     private void AttackPoweredUp()
     {
-        StartCoroutine(PowerUpTimer);
+        PowerUpTimer = StartCoroutine(PowerUpOverdrive());
     }
 
     public bool IsWeaponActivated()
@@ -58,12 +57,7 @@ public class SecondWeapon : WeaponBase, IWeapon
     private IEnumerator PowerUpOverdrive()
     {
         isPoweredUp = true;
-        powerUpTimeLeft = PowerUpTime;
-        while (powerUpTimeLeft > 0f)
-        {
-            powerUpTimeLeft -= Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(PowerUpTime);
         isPoweredUp = false;
     }
 }
