@@ -6,11 +6,18 @@ public class SecondWeapon : WeaponBase, IWeapon
 {
     private Coroutine PowerUpTimer;
 
+    public float BulletSpeed, BulletDamage, BulletLifespan, FireRate;
     public float PowerUpTime = 10f;
-    private bool isPoweredUp;
+    public GameObject Projectile;
+    public Transform FirePosition;
+    private bool isPoweredUp, canFire = true;
     public void Fire()
     {
-        if(isPoweredUp)
+        if (!canFire)
+        {
+            return;
+        }
+        if (isPoweredUp)
         {
             PoweredAttack();
         }
@@ -18,16 +25,22 @@ public class SecondWeapon : WeaponBase, IWeapon
         {
             RegularAttack();
         }
+        StartCoroutine(HoldFire());
     }
 
     private void RegularAttack()
     {
-        Debug.Log("Regular Attack");
+        GameObject projectile = Instantiate(Projectile, FirePosition.position, FirePosition.rotation);
+        Projectile firedProjectile = projectile.GetComponent<Projectile>();
+        
+        firedProjectile.SetupBullet(FirePosition.rotation.eulerAngles.z, BulletDamage, BulletSpeed, BulletLifespan);
     }
 
     private void PoweredAttack()
     {
-        Debug.Log("Powered Attack");
+        GameObject projectile = Instantiate(Projectile, FirePosition.position, FirePosition.rotation);
+        Projectile firedProjectile = projectile.GetComponent<Projectile>();
+        firedProjectile.SetupBullet(FirePosition.rotation.eulerAngles.z, BulletDamage, BulletSpeed * 2f, BulletLifespan); ;
     }
 
     public bool IsWeaponActivated()
@@ -56,6 +69,12 @@ public class SecondWeapon : WeaponBase, IWeapon
             return false;
         }
     }
+    private IEnumerator HoldFire()
+    {
+        canFire = false;
+        yield return new WaitForSeconds(FireRate);
+        canFire = true;
+    }
 
     public void ResetStats()
     {
@@ -70,7 +89,10 @@ public class SecondWeapon : WeaponBase, IWeapon
     private IEnumerator PowerUpOverdrive()
     {
         isPoweredUp = true;
+        float oldFireRate = FireRate;
+        FireRate *= 0.5f;
         yield return new WaitForSeconds(PowerUpTime);
+        FireRate = oldFireRate;
         isPoweredUp = false;
     }
 }

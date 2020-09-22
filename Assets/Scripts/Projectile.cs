@@ -20,12 +20,16 @@ public class Projectile : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	public void SetupBullet(float newDirection, float damage, float speed)
+	public void SetupBullet(float newDirection, float damage, float speed, float lifetime = 0f)
 	{
         direction.x = -Mathf.Sin(Mathf.Deg2Rad * newDirection);
         direction.y = Mathf.Cos(Mathf.Deg2Rad * newDirection);
         Damage = damage;
         Speed = speed;
+        if(lifetime >= 0f)
+		{
+            Lifetime = lifetime;
+		}
         StartCoroutine(WaitAndDie());
     }
 

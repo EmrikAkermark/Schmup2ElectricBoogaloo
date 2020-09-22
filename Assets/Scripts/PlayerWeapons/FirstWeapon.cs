@@ -53,7 +53,7 @@ public class FirstWeapon : WeaponBase, IWeapon
         {
             GameObject projectile = Instantiate(Projectile, FirePosition[i].position, FirePosition[i].rotation);
             Projectile firedProjectile = projectile.GetComponent<Projectile>();
-            firedProjectile.SetupBullet(FireRotation[i], BulletDamage, BulletSpeed);
+            firedProjectile.SetupBullet(FireRotation[i], BulletDamage, BulletSpeed, BulletLifespan);
         }
     }
 	private void Start()

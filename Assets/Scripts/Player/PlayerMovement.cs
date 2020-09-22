@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed;
     private Vector2 direction;
+    public Vector4 Boundaries;
 
     private void Start()
     {
@@ -46,6 +47,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 currentPosition = transform.position;
         direction *= Time.fixedDeltaTime * speed;
-        rb.MovePosition(currentPosition + direction);
+        currentPosition += direction;
+        if(currentPosition.x < Boundaries.x || currentPosition.x > Boundaries.y)
+		{
+            currentPosition.x = Mathf.Clamp(currentPosition.x, Boundaries.x, Boundaries.y);
+		}
+        if (currentPosition.y < Boundaries.z || currentPosition.y > Boundaries.w)
+        {
+            currentPosition.y = Mathf.Clamp(currentPosition.y, Boundaries.z, Boundaries.w);
+		}
+        rb.MovePosition(currentPosition);
     }
 }
