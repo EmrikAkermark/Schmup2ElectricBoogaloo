@@ -74,5 +74,8 @@ public class PlayerShip : MonoBehaviour, IDamagable
 		ChargingShield = StartCoroutine(RechargeShield());
 	}
 
+	public void Delete()
+	{
 
+	}
 }

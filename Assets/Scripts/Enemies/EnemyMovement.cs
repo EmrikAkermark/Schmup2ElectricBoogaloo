@@ -11,9 +11,8 @@ public class EnemyMovement : MonoBehaviour
     private float time;
     private bool hasSubMovement;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        time += Time.deltaTime;
         Move();
         if(hasSubMovement)
 		{
@@ -36,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
 	private void Move()
     {
         Vector2 currentPosition = transform.position;
-        currentPosition.y -= EnemySpeed * Time.deltaTime;
+        currentPosition.y -= EnemySpeed * Time.fixedDeltaTime;
         transform.position = currentPosition;
     }
 
@@ -48,6 +47,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void SubMove()
    {
+        time += Time.fixedDeltaTime;
         Vector2 newPosition = new Vector2();
         newPosition.x = SubMovement.SubWidth * Mathf.Cos(time * SubMovement.SubHorizontalMod * Mathf.PI);
         newPosition.y = SubMovement.SubHeight * Mathf.Sin(time * SubMovement.SubVerticalMod * Mathf.PI);

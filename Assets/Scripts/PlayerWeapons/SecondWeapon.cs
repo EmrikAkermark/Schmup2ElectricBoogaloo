@@ -12,22 +12,22 @@ public class SecondWeapon : WeaponBase, IWeapon
     {
         if(isPoweredUp)
         {
-            AttackPoweredUp();
+            PoweredAttack();
         }
         else
         {
-            AttackRegular();
+            RegularAttack();
         }
     }
 
-    private void AttackRegular()
+    private void RegularAttack()
     {
         Debug.Log("Regular Attack");
     }
 
-    private void AttackPoweredUp()
+    private void PoweredAttack()
     {
-        PowerUpTimer = StartCoroutine(PowerUpOverdrive());
+        Debug.Log("Powered Attack");
     }
 
     public bool IsWeaponActivated()
@@ -40,7 +40,15 @@ public class SecondWeapon : WeaponBase, IWeapon
     {
         if(CheckIfSameWeapon(WeaponId))
         {
-            AttackPoweredUp();
+            if (!IsPickedUp)
+            {
+                IsPickedUp = true;
+            }
+            else
+			{
+                Upgradeattack();
+            }
+                
             return true;
         }
         else
@@ -53,6 +61,11 @@ public class SecondWeapon : WeaponBase, IWeapon
     {
         ResetStats();
     }
+
+    private void Upgradeattack()
+	{
+        PowerUpTimer = StartCoroutine(PowerUpOverdrive());
+	}
 
     private IEnumerator PowerUpOverdrive()
     {

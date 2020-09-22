@@ -35,7 +35,7 @@ public class PlayerWeapons : MonoBehaviour
 
     public void UpgradeCurrentWeapon()
     {
-        CurrentWeapon.PickUp(0);
+        CurrentWeapon.PickUp(-1);
     }
 
     public void ResetCurrentWeapon()

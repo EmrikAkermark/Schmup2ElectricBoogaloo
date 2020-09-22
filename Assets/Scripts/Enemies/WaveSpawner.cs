@@ -10,6 +10,7 @@ public class WaveSpawner : MonoBehaviour
 	public Transform SpawnPoint;
 	public EnemySubMovements SubMovement;
 	public float AvarageTimeBetweenShots, TimeBetweenShotsSpread;
+	public bool SpawnAllAtOnce;
 
 	private List<IEnemy> spawnedEnemies = new List<IEnemy>();
 	private bool shouldFire, stillSpawning;
@@ -17,8 +18,8 @@ public class WaveSpawner : MonoBehaviour
 
 	private void Start()
 	{
-		StartCoroutine(SpawnWaveStaggered());
 		self = gameObject.GetComponent<WaveSpawner>();
+		StartCoroutine(SpawnWaveStaggered());
 	}
 
 	
@@ -40,6 +41,7 @@ public class WaveSpawner : MonoBehaviour
 			else if(spawnedEnemies.Count == 0 && !stillSpawning)
 			{
 				shouldFire = false;
+				continue;
 			}
 			spawnedEnemies[Random.Range(0, spawnedEnemies.Count)].Shoot();
 		}

@@ -26,19 +26,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(Right))
         {
-            direction.x += 1;
+            direction.x = 1;
         }
         if (Input.GetKey(Left))
         {
-            direction.x -= 1;
+            direction.x = -1;
         }
         if (Input.GetKey(Up))
         {
-            direction.y += 1;
+            direction.y = 1;
         }
         if (Input.GetKey(Down))
         {
-            direction.y -= 1;
+            direction.y = -1;
         }
     }
 

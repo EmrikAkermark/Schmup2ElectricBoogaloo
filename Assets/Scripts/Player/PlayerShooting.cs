@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public KeyCode Shoot;
+    public KeyCode Shoot, NextWeapon, PrevWeapon;
 
     private PlayerWeapons pWeapons;
 
@@ -18,6 +18,14 @@ public class PlayerShooting : MonoBehaviour
         if(Input.GetKey(Shoot))
 		{
          pWeapons.Fire();
+		}
+		if(Input.GetKeyDown(NextWeapon))
+		{
+			pWeapons.CycleForward();
+		}
+		if(Input.GetKeyDown(PrevWeapon))
+		{
+			pWeapons.CycleBack();
 		}
     }
 }

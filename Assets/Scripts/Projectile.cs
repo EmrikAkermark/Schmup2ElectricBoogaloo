@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-        IDamagable hitThing = collision.gameObject.GetComponent<IDamagable>();
+        IDamagable hitThing = collision.gameObject.GetComponentInParent<IDamagable>();
         if (hitThing != null)
         {
             hitThing.GetHit(Damage);

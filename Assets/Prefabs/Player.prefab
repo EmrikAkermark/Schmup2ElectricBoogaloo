@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 81047250860691586}
   - component: {fileID: 6618688748023419744}
   - component: {fileID: 5282787295160690284}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,12 @@ MonoBehaviour:
   UpgradeTierMax: 0
   WeaponID: 0
   IsPickedUp: 0
+  Projectile: {fileID: 0}
+  FirePosition: []
+  BulletSpeed: 0
+  BulletDamage: 0
+  BulletLifespan: 0
+  FireRate: 0
 --- !u!114 &6618688748023419744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +144,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8524390796687608480}
   - component: {fileID: 8524390796687608481}
-  m_Layer: 0
+  - component: {fileID: 2737789592504125074}
+  m_Layer: 11
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,3 +217,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &2737789592504125074
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524390796687608483}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.08

@@ -31,16 +31,24 @@ public class StandardEnemy : MonoBehaviour, IEnemy, IDamagable
 		health -= damage;
 		if (health <= 0)
 		{
-			var OwnShit = gameObject.GetComponent<IEnemy>();
-			mySpawner.RemoveEnemyFromList(OwnShit);
-			gameObject.SetActive(false);
+			Die();
 		}
 	}
 
 	public void PlayerCollision()
 	{
+		Die();
+	}
+
+	private void Die()
+	{
 		var OwnShit = gameObject.GetComponent<IEnemy>();
 		mySpawner.RemoveEnemyFromList(OwnShit);
-		gameObject.SetActive(false);
+		Destroy(gameObject);
+	}
+
+	public void Delete()
+	{
+		Die();
 	}
 }
