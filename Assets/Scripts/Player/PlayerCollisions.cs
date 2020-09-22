@@ -16,7 +16,8 @@ public class PlayerCollisions : MonoBehaviour
 		IDamagable hitThing = collision.gameObject.GetComponentInParent<IDamagable>();
 		if (hitThing != null)
 		{
-
+			hitThing.PlayerCollision();
+			playerShip.PlayerCollision();
 		}
 	}
 

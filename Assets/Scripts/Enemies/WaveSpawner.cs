@@ -19,7 +19,6 @@ public class WaveSpawner : MonoBehaviour
 	private void Start()
 	{
 		self = gameObject.GetComponent<WaveSpawner>();
-		StartCoroutine(SpawnWaveStaggered());
 	}
 
 	

@@ -5,9 +5,20 @@ using UnityEngine;
 public class PlayerShip : MonoBehaviour, IDamagable
 {
 	public float Health, InvulnerabilityTime,  ShieldTime, ShieldCooldown;
+	public KeyCode Shield;
+	public GameObject ShieldSprite;
+
 	private bool hasShield = false, shieldIsReady = true;
 
 	private Coroutine ShieldIsUp, ChargingShield;
+
+	private void Update()
+	{
+		if(Input.GetKeyDown(Shield))
+		{
+			ActivateShield();
+		}
+	}
 
 	public void GetHit(float damage)
 	{
