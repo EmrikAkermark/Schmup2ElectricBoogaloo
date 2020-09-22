@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -10,9 +8,10 @@ public class PlayerCollisions : MonoBehaviour
 	{
 		playerShip = gameObject.GetComponent<PlayerShip>();
 	}
-
+	//Can't collide, don't know why
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
+		
 		IDamagable hitThing = collision.gameObject.GetComponentInParent<IDamagable>();
 		if (hitThing != null)
 		{

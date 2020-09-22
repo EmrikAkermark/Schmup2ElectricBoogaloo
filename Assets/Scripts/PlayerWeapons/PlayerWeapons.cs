@@ -8,14 +8,8 @@ public class PlayerWeapons : MonoBehaviour
     public IWeapon[] weaponArray;
     public IWeapon CurrentWeapon;
 
-
-    public void FireAll()
-    {
-        for (int i = 0; i < weaponArray.Length; i++)
-        {
-            weaponArray[i].Fire();
-        }
-    }
+    //This whole thing was designed with at least 3 weapons in mind, however
+    //I only managed to make 2 weapons.
 
     public void Fire()
     {

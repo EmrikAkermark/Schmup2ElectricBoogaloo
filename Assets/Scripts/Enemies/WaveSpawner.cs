@@ -21,7 +21,17 @@ public class WaveSpawner : MonoBehaviour
 		self = gameObject.GetComponent<WaveSpawner>();
 	}
 
-	
+	public void Spawn()
+	{
+		if(SpawnAllAtOnce)
+		{
+			SpawnWaveInstant();
+		}
+		else
+		{
+			SpawnWaveStaggered();
+		}
+	}
 
 	public void RemoveEnemyFromList(IEnemy enemy)
 	{
@@ -46,7 +56,11 @@ public class WaveSpawner : MonoBehaviour
 		}
 	}
 
-	private IEnumerator SpawnWaveStaggered()
+	private void SpawnWaveStaggered()
+	{
+		StartCoroutine(StaggeredWave());
+	}
+	private IEnumerator StaggeredWave()
 	{
 		stillSpawning = true;
 		shouldFire = true;

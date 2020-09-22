@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShip : MonoBehaviour, IDamagable
 {
-	public float Health, InvulnerabilityTime,  ShieldTime, ShieldCooldown;
+	public float Health, ShieldUpTime, ShieldCooldown;
 	public KeyCode Shield;
 	public GameObject ShieldSprite;
 
@@ -29,7 +29,7 @@ public class PlayerShip : MonoBehaviour, IDamagable
 		Health -= damage;
 		if (Health <= 0f)
 		{
-			Debug.Log("Ded");
+			gameObject.SetActive(false);
 		}
 	}
 
@@ -45,6 +45,7 @@ public class PlayerShip : MonoBehaviour, IDamagable
 		{
 			StopCoroutine(ShieldIsUp);
 			hasShield = false;
+			ShieldSprite.SetActive(false);
 			ChargingShield = StartCoroutine(RechargeShield());
 		}
 		else
@@ -57,18 +58,18 @@ public class PlayerShip : MonoBehaviour, IDamagable
 		}
 	}
 
-	public void ShieldQuickCharge()
-	{
-		if(!shieldIsReady)
-		{
-			shieldIsReady = true;
-			StopCoroutine(ChargingShield);
-		}
-		else if(hasShield)
-		{
-			ShieldIsUp = StartCoroutine(ShieldActivated());
-		}
-	}
+	//public void ShieldQuickCharge()
+	//{
+	//	if(!shieldIsReady)
+	//	{
+	//		shieldIsReady = true;
+	//		StopCoroutine(ChargingShield);
+	//	}
+	//	else if(hasShield)
+	//	{
+	//		ShieldIsUp = StartCoroutine(ShieldActivated());
+	//	}
+	//}
 
 	IEnumerator RechargeShield()
 	{
@@ -80,8 +81,10 @@ public class PlayerShip : MonoBehaviour, IDamagable
 	{
 		shieldIsReady = false;
 		hasShield = true;
-		yield return new WaitForSeconds(ShieldTime);
+		ShieldSprite.SetActive(true);
+		yield return new WaitForSeconds(ShieldUpTime);
 		hasShield = false;
+		ShieldSprite.SetActive(false);
 		ChargingShield = StartCoroutine(RechargeShield());
 	}
 

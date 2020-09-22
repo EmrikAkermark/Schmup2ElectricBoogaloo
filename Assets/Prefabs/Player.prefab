@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7535464437827326877
 Transform:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 151933051770210138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 8524390796230595304}
   m_RootOrder: 2
@@ -257,7 +257,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.08962262, g: 0.92162794, b: 1, a: 0.57254905}
+  m_Color: {r: 0.08962262, g: 0.92162794, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -281,8 +281,9 @@ GameObject:
   - component: {fileID: 3919536141488581965}
   - component: {fileID: 81047250860691586}
   - component: {fileID: 6618688748023419744}
-  - component: {fileID: 5282787295160690284}
   - component: {fileID: 1841192410}
+  - component: {fileID: 3972410100627820183}
+  - component: {fileID: 7748189264916035642}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -404,18 +405,6 @@ MonoBehaviour:
   PowerUpTime: 10
   Projectile: {fileID: 6490728601086156750, guid: 84960c5273cfb8e439a4115fc64341d0, type: 3}
   FirePosition: {fileID: 875262871}
---- !u!114 &5282787295160690284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8524390796230595309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01af0b10ab4d87544a18e87ae7f2d873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1841192410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +420,35 @@ MonoBehaviour:
   Shoot: 32
   NextWeapon: 101
   PrevWeapon: 113
+--- !u!114 &3972410100627820183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524390796230595309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e120591945034d4fab85fe79cd7eb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 10
+  ShieldUpTime: 3
+  ShieldCooldown: 3
+  Shield: 304
+  ShieldSprite: {fileID: 151933051770210138}
+--- !u!114 &7748189264916035642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524390796230595309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9d26904a0c0e945aaff9574f0fed70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8524390796687608483
 GameObject:
   m_ObjectHideFlags: 0

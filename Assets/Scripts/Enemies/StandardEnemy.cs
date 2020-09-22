@@ -7,7 +7,7 @@ public class StandardEnemy : MonoBehaviour, IEnemy, IDamagable
 	public Transform FiringPoint;
 	public GameObject Projectile;
 	private WaveSpawner mySpawner;
-	public float damage, health, speed;
+	public float Damage, Health, ProjectileSpeed, ProjectileLifeTime;
 
 	public void GetHit(float damage)
 	{
@@ -18,7 +18,7 @@ public class StandardEnemy : MonoBehaviour, IEnemy, IDamagable
 	{
 		GameObject projectile = Instantiate(Projectile, FiringPoint.position, FiringPoint.rotation);
 		Projectile firedProjectile = projectile.GetComponent<Projectile>();
-		firedProjectile.SetupBullet(FiringPoint.rotation.eulerAngles.z, damage, speed);
+		firedProjectile.SetupBullet(FiringPoint.rotation.eulerAngles.z, Damage, ProjectileSpeed, ProjectileLifeTime);
 	}
 
 	public void SetupEnemy(WaveSpawner spawner)
@@ -28,8 +28,8 @@ public class StandardEnemy : MonoBehaviour, IEnemy, IDamagable
 
 	private void TakeDamage(float damage)
 	{
-		health -= damage;
-		if (health <= 0)
+		Health -= damage;
+		if (Health <= 0)
 		{
 			Die();
 		}
